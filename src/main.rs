@@ -7,9 +7,9 @@ fn main() {
         io::stdin()
             .read_line(&mut input1)
             .expect("Failed to read input.");
-        if input1.trim().to_lowercase() == "q"{
+        if input1.trim().to_lowercase() == "q" {
             break;
-        } 
+        }
         let number1: f64 = input1
             .trim()
             .parse()
@@ -36,22 +36,19 @@ fn main() {
         println!("Your oprator: {:?}", operator);
         println!("Your second number: {}", number2);
 
-        if operator == "+" {
-            println!("Result: {}", number1 + number2);
-        } else if operator == "-" {
-            println!("Result: {}", number1 - number2);
-        } else if operator == "*" {
-            println!("Result: {}", number1 * number2);
-        } else if operator == "/" {
-            if number2 == 0.0 {
-                println!("Cannot divide with 0");
-            } else {
-                println!("Result: {}", number1 / number2);
+        match operator {
+            "+" => println!("Result: {}", number1 + number2),
+            "-" => println!("Result: {}", number1 - number2),
+            "*" => println!("Result: {}", number1 * number2),
+            "/" => {
+                if number2 == 0.0 {
+                    println!("Cannot divide with 0");
+                } else {
+                    println!("Result: {}", number1 / number2);
+                }
             }
-        } else if operator == "%" {
-            println!("Result: {}", number1 % number2);
-        } else {
-            println!("Invalid operator");
+            "%" => println!("Result: {}", number1 % number2),
+            _ => println!("Invalid operator"),
         }
     }
 }
