@@ -10,10 +10,15 @@ fn main() {
         if input1.trim().to_lowercase() == "q" {
             break;
         }
-        let number1: f64 = input1
+        let number1: f64 = match input1
             .trim()
-            .parse()
-            .expect("Please enter a valid 1st number...");
+            .parse::<f64>() {
+                Ok(number) => number,
+                Err(_) => {
+                    println!("Please enter a valid number.");
+                    continue;
+                }
+            };
 
         let mut operator = String::new();
         println!("Enter an operator[+ or - or * or / or %]: ");
@@ -27,10 +32,15 @@ fn main() {
         io::stdin()
             .read_line(&mut input2)
             .expect("Failed to read input.");
-        let number2: f64 = input2
+        let number2: f64 = match input2
             .trim()
-            .parse()
-            .expect("Please enter a valid 2nd number...");
+            .parse::<f64>() {
+                Ok(number) => number,
+                Err(_) => {
+                    println!("Please enter a valid number.");
+                    continue;
+                }
+            };
 
         println!("Your first number: {}", number1);
         println!("Your oprator: {:?}", operator);
