@@ -4,6 +4,11 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     println!("{:?}", args);
 
+    if args.len() != 4 {
+        eprintln!("Usage: {} <number> <operator> <number>", args[0]);
+        std::process::exit(1);
+    }
+
     let number1: f64 = match args[1].parse::<f64>() {
         Ok(number) => number,
         Err(_) => {
